@@ -10,6 +10,7 @@ var bodyparser = require("body-parser");
 var flash = require("connect-flash");
 var passport = require("passport");
 var session = require("express-session");
+var setuppassport = require("./setuppassport");
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -69,6 +70,9 @@ app.use(flash());
 
 app.use(passport.initialize());
 app.use(passport.session());
+
+//passport
+
 
 
 module.exports = app;
