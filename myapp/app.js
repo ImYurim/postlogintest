@@ -6,6 +6,10 @@ var logger = require('morgan');
 var bodyparser = require('body-parser');
 var mongoose = require('mongoose');
 var db = require('./db');
+var bodyparser = require("body-parser");
+var flash = require("connect-flash");
+var passport = require("passport");
+var session = require("express-session");
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -52,6 +56,19 @@ var User = require('./models/user');
 
 app.use(bodyparser.urlencoded({extended:true}));
 app.use(bodyparser.json());
+
+//session
+app.use(cookieParser());
+app.use(session({
+  secret:"alefjalkefhkef",
+  resave:true,
+  saveUninitialized:true
+}));
+
+app.use(flash());
+
+app.use(passport.initialize());
+app.use(passport.session());
 
 
 module.exports = app;
