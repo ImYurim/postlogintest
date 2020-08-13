@@ -20,6 +20,21 @@ var joinRouter = require('./routes/join/joinrouter');
 
 var app = express();
 
+app.use(flash());
+
+//passport
+
+app.use(passport.initialize());
+app.use(passport.session());
+
+//session
+app.use(cookieParser());
+app.use(session({
+  secret:"alefjalkefhkef",
+  resave:true,
+  saveUninitialized:true
+}));
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
@@ -58,20 +73,9 @@ var User = require('./models/user');
 app.use(bodyparser.urlencoded({extended:true}));
 app.use(bodyparser.json());
 
-//session
-app.use(cookieParser());
-app.use(session({
-  secret:"alefjalkefhkef",
-  resave:true,
-  saveUninitialized:true
-}));
 
-app.use(flash());
 
-app.use(passport.initialize());
-app.use(passport.session());
 
-//passport
 
 
 

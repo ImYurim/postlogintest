@@ -1,0 +1,12 @@
+<%include ../_header %>
+    <h2>로그인</h2>
+    <form action="/join/login" method="POST">
+        <label for="userid">아이디</label><input name="userid" type="email" placeholder="이메일형식으로 입력해주세요.">
+        <br>
+        <label for="userpassword">비밀번호</label><input name="userpassword" type="password" placeholder="비밀번호를 입력해주세요.">
+        <br>
+
+        <button type="submit">로그인</button>
+    </form>
+
+<% include ../_footer%>
